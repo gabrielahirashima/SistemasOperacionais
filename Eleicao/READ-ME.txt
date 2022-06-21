@@ -1,0 +1,12 @@
+Para executar o programa, primeiramente deve se abrir o código fonte e alterar as variáveis "client_ip, client_port, server_ip, server_port" nos arquivos de client e server de acordo com os endereços das máquinas utilizadas.
+É importante também alterar os ports caso sejam feitos testes locais para que os resultados sejam os esperados. 
+A biblioteca tcp_latency deve ser instalada para o funcionamento do programa. 
+
+1- Inicie o server.py
+2- Inicie quantos clientes quiser
+
+O server funcionará como a raiz da árvore de encaminhamentos, e portanto, é o primeiro "eleito" do sistema.
+Ao fechar o programa server.py, a eleição se inicia, onde cada nó busca o nó mais perto da raiz em uma lista de endereços e envia o resultado da eleição para o nó que serve de servidor temporário.
+Após a eleição, caso a votação seja unânime, um novo servidor principal é elegido, e este pode receber novas conexões de novos clientes.
+
+Critério de voto : Deve ser o primeiro elemento de uma lista de endereços que é retransmitida constantemente quando sofre alterações.
